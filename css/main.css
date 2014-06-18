@@ -1,0 +1,30 @@
+/* CSS declarations go here */
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+.create-form {
+  margin-bottom: 20px; }
+
+.tile {
+  float: left;
+  font-size: 150px;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  background: white;
+  border: 1px solid black; }
+
+.board {
+  border: 1px solid black;
+  height: 452px;
+  width: 452px; }
+
+.team-1:before {
+  content: "x";
+  margin-top: -45px; }
+
+.team-2:before {
+  content: "o";
+  margin-top: -45px; }

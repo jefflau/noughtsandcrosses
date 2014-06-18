@@ -1,0 +1,72 @@
+<head>
+  <title>day2_connect4</title>
+</head>
+
+<template name="layout">
+	<div class="container">
+		<header class="clearfix">
+			<div class="navbar navbar-default" role="navigation">
+			  <div class="navbar-header">
+			    <a class="navbar-brand" href="#">Noughts and Crosses</a>
+			  </div>
+			  <div class="navbar-collapse collapse">
+			    <ul class="nav navbar-nav">
+			      <li><a href="#">About</a></li>
+			    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			      {{> loginButtons }}
+			    </ul>
+			  </div>
+			</div>
+		</header>
+  	{{> yield}}
+	</div>
+</template>
+
+<template name="board">
+	<div class="board">
+	  {{#each matrix}}
+	  	{{#each this}}
+	  		<div class="team-{{this}} tile"></div>
+	  	{{/each}}
+	  {{/each}}
+	</div>
+</template>
+
+<template name="main">
+	{{#if currentUser}}
+		{{> create}}
+	{{/if}}
+	{{> gameList}}
+</template>
+
+<template name="accessDenied">
+	Access Denied! Please login to access this page
+</template>
+
+<template name="gameList">
+	<ul class="list-group">
+	{{#each games}}
+		<li class="list-group-item clearfix">{{name}} - {{players _id}}/2
+
+		{{#if currentlyPlaying _id}}
+		<a href="game/{{_id}}" class="btn btn-primary pull-right rejoin">Rejoin</a>
+		{{else}}
+		<a href="game/{{_id}}" class="btn btn-primary pull-right join">Join</a>
+		{{/if}}
+
+		</li>
+	{{/each}}
+</ul>
+</template>
+
+<template name="create">
+	<form class="create-form">
+    <div class="input-group">
+      <input type="text" id="gameName" class="form-control" placeholder="Name your game!">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Create</button>
+      </span>
+    </div><!-- /input-group -->
+	</form>
+</template>
